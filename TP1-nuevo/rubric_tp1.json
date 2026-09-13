@@ -1,0 +1,154 @@
+{
+  "tp_metadata": {
+    "tp_id": "TSO-2026-TP1",
+    "title": "TP N° 1: Introducción a los Sistemas Operativos y Estructuras de Computación",
+    "catedra": "Teoría de Sistemas Operativos - UNJu Facultad de Ingeniería",
+    "version": "1.0.0"
+  },
+  "security": {
+    "algorithm": "SHA-256 + Salted HMAC",
+    "protected": true
+  },
+  "max_score": 100,
+  "exercises": {
+    "ej1_definicion": {
+      "weight": 5,
+      "hash": "e73df262a400965aac98a9d94b1a7e1532194c20de0b503591b576391675d15f",
+      "feedback": "Consultar Silberschatz Cap. 1.1 (pp. 3-8), Carretero Cap. 2.1 (pp. 33-37), Tanenbaum Cap. 1.1 y Diapositiva 3 (U2-3)."
+    },
+    "ej2_funciones_so": {
+      "weight": 10,
+      "hashes": {
+        "gestion_procesos": "57a50d81f7648927938c1e9bb789f5c57c4f335db6d5337048bad2eeb3b15285",
+        "administracion_memoria": "25533f35cf85cabd7773f23df52b3c532ea1e908c3b2ba7495388ae202ffb020",
+        "gestion_dispositivos_io": "a382487cbc2e85aa7316bbe4464912d422068928204cdbd375486c496b22e38e",
+        "diseno_paginas_web": "6304d49a6b315543bdd54e4d6f3c898448c10e774145151fde094bb76ac60797",
+        "administracion_sistema_archivos": "9476947ea6c6d85e395b782a902ab75768aaefe505ce4f0623bd798751040f4f",
+        "gestion_usuarios_permisos": "6ed5776ff7fbf19cdb9e09915daf4460cde1da9ed47b5530c60117736c795a82",
+        "edicion_imagenes": "45fc00e8f7093e9bf51d5b5230e259859072fbad6a1d5a5eb1ba3c08e7e063fd",
+        "deteccion_errores_proteccion": "ef1d9028e56a2fca835db3b2d2150b8f5a302c37be73fbac5ec002a17bfcf270"
+      },
+      "feedback": "Consultar Silberschatz Cap. 1.4-1.8 (pp. 18-28), Carretero Cap. 2.1.2 y Diapositivas 4 y 5 (U2-3)."
+    },
+    "ej3_multithreading_vs_multicore": {
+      "weight": 10,
+      "hashes": {
+        "hardware_multithreading": "c6d496ec633d57575ead487925444dbdcc2b17406a4cf075b7755d34938ecdb4",
+        "hardware_multicore": "cdb956adb5e024a1b147ed2b0ceca4cc8825b99af74fe5875fcff507eb3d03d3",
+        "paralelismo_multithreading": "1fe1cb32eb6b1065f3ae434459a82f87c8d4c5f29b5d7962121feaad253e6e9e",
+        "paralelismo_multicore": "d960181e41cde21b58b72bbcfdef948fe4c9a03f447fb2aea89f4cd147ae8c45",
+        "rendimiento_multithreading": "8365d605e2feeaf4c36cc0097a424e2c6bbcce36198ec67e13377de6a6f65287",
+        "rendimiento_multicore": "1ef3e6da1c854b4045dbafcdaa6216de79371fca673b8c5f39d40f6bc964229a",
+        "costo_multithreading": "e26a18273f48df99e8546a67041fb967827bb612b42445f65ab3eb2bb4b5d167",
+        "costo_multicore": "b6707b9ed394a3008f81cb4c1f92298c4517ada10a814b33d6900ea81d9bb0b3"
+      },
+      "feedback": "Consultar Silberschatz Cap. 1.3 (pp. 13-17), Stallings Cap. 4.2 (pp. 165-172) y Diapositiva 8 (U1)."
+    },
+    "ej4_programa_vs_proceso": {
+      "weight": 10,
+      "hashes": {
+        "item_chrome_exe": "721772175e2bf13aeafa53b6e897f6997fe5da80ea184a6ee15f8034bde1a052",
+        "item_chrome_ram": "f0c7bee03ac5f354f7531c56157b077b5c54e09e6666840e841b99fcf2b7e85f",
+        "item_word_exe": "f8a5333fda849882721f877e2bec0d70be7c14cbfa2d51511969aa7ed5e1bd8f",
+        "item_word_editing": "d4cfd1da9a1e1230a4cc2a58d4dfe1f0f31f0def82afdd692ac79256073b7303",
+        "item_game_installed": "40913a4d2fa90303e3a07d7691c9b719fd2d39a89880e659c268aed395e1fca5",
+        "item_game_running": "944cb49ea5448d685c486d1ed449172846946cd4762cf9ca1b884d2728a8cde2"
+      },
+      "feedback": "Consultar Silberschatz Cap. 3.1 (pp. 81-85), Carretero Cap. 3.1 (pp. 78-79) y Tanenbaum Cap. 2.1 (pp. 71-76)."
+    },
+    "ej5_funciones_situaciones": {
+      "weight": 10,
+      "hashes": {
+        "sit_guardar_carpeta": "97dd0cec6fb12651cbc53a1c9086a2c26d4e85f7e975e84c46532e1aba0e75b6",
+        "sit_imprimir_pdf": "5c6b64ebbdf03325ac7455b9a38d7042183c0e67f7b1d177dd43cbbc88f12689",
+        "sit_abrir_simultaneo": "2213991ab9867e375621311fd22fbbdc759e8c15198869080e82a0fd01b6c6b0",
+        "sit_usar_mouse_teclado": "ee26a0442a7c91514a26a84226565b1a8d45d4f0f557c189d7c689cbe355d7c8",
+        "sit_doble_clic_icono": "35fff39468f449b294f8d566367625aaf2b55145cf6e2c755f4b075e64fd9cf5",
+        "sit_asignar_ram_app": "e600d9f52399af3adfbb2994860200189d4dddc059930d3e7c2be8ed46edbd86"
+      },
+      "feedback": "Consultar Silberschatz Cap. 2.1-2.2 (pp. 39-50), Carretero Cap. 2.3-2.8 y Diapositivas 4-6 (U2-3)."
+    },
+    "ej6_modo_usuario_kernel": {
+      "weight": 15,
+      "hashes": {
+        "act_1_word": "05c4ba493d16aceb5abdbe2a6c3c2a47a380993cf045f289bc90f1f76fca8933",
+        "act_2_admin_ram": "23ddbc69e8ba188c59ca69b2c10f6209f4efacbb434f62565ba73be9ad118f43",
+        "act_3_vlc": "ed36e8cab25d1c8deacb658dda721e0d92efe0f58f4f70ea384402eeadec2ae8",
+        "act_4_irq_teclado": "c776fa7e6808a0d490296961761552fddc5ca0c11465fe8d59d7dfab34ae08a7",
+        "act_5_crear_proceso": "c704600fec8cf4c5f65f3417751eac0f57146113936b223525cd7ea1bae42499",
+        "act_6_navegar_web": "28f3eb5b5b86eae5de739dc061a044b51650b82cdf498c88fd9681f51d2048ca",
+        "act_7_controlador_disco": "fb40c9b73fa124ca424ede655fa60b720eb8ce49278a1a445aa81636286a463c",
+        "act_8_excel": "a7abf4cd8f1f7f274fa0e69d549ae5b0e63b3629431e6867ce5b7f52852cbeab",
+        "act_9_asignar_cpu": "2be11664b31fe0465159bb02b6c6ba41abe191a9ff3231e1722d9430a4fc3fa1",
+        "act_10_permisos_archivos": "ce9096ba938be3610627a0db707a6958e3db087243a0ba190ecb7c0bfd896520",
+        "act_11_modificar_mapa_memoria": "db90e355a47a8c0208057fc15f3229846dc1f2c8bdd83df94bcaed1b7af9b265",
+        "act_12_cambiar_reloj_hw": "4b5493b7566d3febd0583f52120b00fe7e1476fb166f3d6065a7d6b2ec2507b4",
+        "act_13_escribir_busqueda": "5c1ba6c2bb44dd5c4348db3f3592fe0e83a57e7f517416f404468cccf05e3d4d",
+        "act_14_reconocer_usb": "d20dde763e0dec42ab8c1b4ffdd5b236b5c227158429ed84e6cde3e7212d7047",
+        "act_15_asignar_memoria_chrome": "c1de98a28bd616ff3d63683c3d721be6539f7aa8b21f866b9b651bbf836f4a1d"
+      },
+      "feedback": "Consultar Silberschatz Cap. 1.5 (pp. 17-21), Carretero Cap. 1.2.1, 1.8 y Diapositiva 7 (U1)."
+    },
+    "ej7_estructuras_kernel_vf": {
+      "weight": 15,
+      "hashes": {
+        "vf_1_kernel_admin_hw": "64efc442c7b05cbcbe561109eb3a4298b2e63706c1aef5209d4c2e59e06561e2",
+        "vf_2_monolitico_user_space": "cd1c1d9b05698baf5bafcf046100a4d6604c875e4154d09bdbc9e1e0dff193c1",
+        "vf_3_linux_monolitico": "0bf963893ae900cbdc992ad9a7e6e660326d0a7fa03de1d41925bc35949a4136",
+        "vf_4_microkernel_esenciales": "08eb2856be71fb3dde46f89f5e862249563cef934bcbe04152100a3b1388c39a",
+        "vf_5_microkernel_seguridad": "868d06fd21e7f4fe4f800f3a6bf55a992ebf97cb31de71516fa2858d42008080",
+        "vf_6_fallo_monolitico_afecta_todo": "83a12d772686214db7b3659a8839e5c0ea91591a139fc22b7d6c466a98df03d8",
+        "vf_7_minix_qnx_microkernel": "9b147e93ae06cb4cf20ccd855b44bc5e6e8430821edafc3cc161a5470248433f",
+        "vf_8_hibridos_combinan": "566dde893be640e512f2285adbd458c04af7c08e3aef77d877a85b1f4557bcd8",
+        "vf_9_windows11_hibrido": "4f44c156b23c58dc5260d9cdf80cbe42ea56f06318e171f545069d02f268c766",
+        "vf_10_microkernel_mayor_rendimiento": "33f6e0596a0711d8aa12c723c650c811801e625e3816e28053515c8a4e68e865",
+        "vf_11_microkernel_servicios_fuera": "9a45dbe0b659d040fe98d850413eb48a1051ab23a695ded4cf0a42ced965fa84",
+        "vf_12_comunicacion_monolitico_mas_rapida": "708edd997018d4397294ef2a64560a33d82cac8ad2d2a7090ce5331be88d7153",
+        "vf_13_macos_xnu_hibrido": "427bccb8cf1e9964ecd5b465929ef3c60fe764ad9e21bf5767c54cc414d10e61",
+        "vf_14_microkernel_modularidad_mantenimiento": "78e4fb8627a4d45f2ac3e3de8c37670df4c447b38583d27cfe6f452a8013ee07",
+        "vf_15_hibridos_eliminan_desventajas_total": "9289e7ddd09b14e9a209a2b863ab10288ac8ee352f096fd7b1ebad47ffc73775"
+      },
+      "feedback": "Consultar Silberschatz Cap. 2.7 (pp. 58-65), Tanenbaum Cap. 1.7 (pp. 41-48) y Diapositivas 8, 17 y 18 (U2-3)."
+    },
+    "ej8_tipos_sistemas_operativos": {
+      "weight": 15,
+      "hashes": {
+        "so_marcapasos": "7274287e1b17f23fd0076d4e71a38836420f836197028dc43ba144cec961bf0e",
+        "so_cajeros_banco": "490f1aef80878101c51e089408def49988aba69be5bcfea50a41d6e2f9ae3f5c",
+        "so_horno_secado": "56182710c0f8dcecf954f6de39479cc8822eb6545a3e9a941e6faac66f64cee0",
+        "so_aeropuerto_vuelos": "bbca8f93c0da4c3067d7f2d5c5fd2392e63d6343517aa799fbc74244f7b5deca",
+        "so_laptop_estudiante": "c8b6392be23fb2945e6c14eb4d7236b3e1da919239c2efe74f5f99af20148fa0",
+        "so_ecommerce_web": "7abbeaca9bab54132b8e5e91764922eaf76b4043936a1ddce38024c29f01bff3",
+        "so_tarjeta_sim": "b9d407d614b31563c95968670bb26ddadb9207163a48b88ab20fa785ec0cd93e",
+        "so_supercomputadora": "3aa137f4a336c9dca7e8787ff3c90e183cd203817b8a15aa7f939c2f8464cf94",
+        "so_horno_microondas": "0a21ad4114474ab207b656c39d5fbd73c8ff0f3b87ae69362ff27c86c9d05744",
+        "so_smartphone": "18fde9fea26abaa8042f08e68c4e12648757903c1806bf1b6d5dd26e7ce6287c",
+        "so_transparente_multiprocesador": "e0c23080c36398833b44ab328531cd0753dc1176997ef9523374b1db45ace4c7"
+      },
+      "feedback": "Consultar Silberschatz Cap. 1.2 (pp. 8-13), Tanenbaum Cap. 1.2 (pp. 7-12) y Diapositivas 10-16, 22 (U2-3)."
+    },
+    "ej9_arquitectura_proteccion_mc": {
+      "weight": 5,
+      "hashes": {
+        "mc_dma": "c03321c8c845a211dd665ecaa94ee1917fbe76ae62f7afe0811b03bca41dcc43",
+        "mc_localidad_cache": "0ce090b9bd923fd4975b6726ddd78f5de48f4709c39b6fd79c1e62c715782e62",
+        "mc_registros_base_limite": "d5993b6e5dc5dd7abeccee7c05b79e66ff76c1b1fece5da806b36be6ccc34d3a",
+        "mc_temporizador_cpu": "2fd16c772d61a30514c0fac8e33426697a2b618c5e9794fe2e680fc33d4cc62e",
+        "mc_sysgen_proposito": "3f14849ffc407c09bb1dc60bff7e34b628a8d5820ac416da95376781f20d4e13"
+      },
+      "feedback": "Consultar Silberschatz Cap. 1.2, 1.4 (pp. 9-27), Carretero Cap. 1.3-1.8 y Diapositivas U1 y U2-3 (Slide 20)."
+    },
+    "ej10_mecanismos_vs_politicas": {
+      "weight": 5,
+      "hashes": {
+        "mvp_timer_hardware": "01d23331012d9f392713c05d15b708ea20e06187bb57f0a1663cb23ce05e8ea4",
+        "mvp_quantum_20ms": "2625906df7efdbc0fe8d1cdbdc346da0165b293103e82fe71f04c47b57b37e9f",
+        "mvp_bit_modo_dual": "b62c3c5dfd6199eacfdf7edfc979acfc8f35b15cb3c81355d2a2101b9d8a7dd3",
+        "mvp_prioridad_proceso_alta": "3a24aeee8ae8da4dc1e0b4d2d5f33cfcabedc51f7f9813a27ce420082e169ecb",
+        "mvp_registros_base_limite": "3c80bfdb4f98962d14a4e0136d28fd8c98ce62ff5cec6696450809bac1073528",
+        "mvp_politica_reemplazo_lru": "54b02f4432789194a675e605eb7f7d94d5e73da9d4ca50fab4bcee0bcbff867e"
+      },
+      "feedback": "Consultar Silberschatz Cap. 2.6 (pp. 56-58), Tanenbaum Cap. 1.6 y Diapositiva 19 (U2-3)."
+    }
+  }
+}

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP N° 1: Introducción a los Sistemas Operativos | TSO - UNJu Facultad de Ingeniería</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-glow"></div>
+
+  <div class="container">
+    <!-- ==================== HEADER ==================== -->
+    <header class="header-hero">
+      <div class="header-meta">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="badge-tag green">🎓 UNJu — Facultad de Ingeniería</span>
+          <span class="badge-tag purple">Ingeniería Informática</span>
+          <span class="badge-tag">Ciclo Lectivo 2026</span>
+        </div>
+        <button id="theme-toggle-btn" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">🌓 Tema</button>
+      </div>
+
+      <h1 class="main-title">Trabajo Práctico N° 1: Introducción a los Sistemas Operativos</h1>
+      <p class="subtitle">Estructuras de Computación, Arquitectura del Kernel, Modos de Ejecución y Tipos de Sistemas</p>
+
+      <div class="academic-info">
+        <div><strong>Cátedra:</strong> Teoría de Sistemas Operativos (TSO)</div>
+        <div><strong>Responsable de Cátedra:</strong> Ing. María Fernanda Vázquez</div>
+        <div><strong>Jefe de Trabajos Prácticos:</strong> Ing. Fabio D. Argañaraz</div>
+        <div><strong>Modalidad:</strong> Individual — Autoevaluativo + Exportación JSON para Git / Classmoji</div>
+      </div>
+    </header>
+
+    <!-- ==================== STICKY TOOLBAR ==================== -->
+    <div class="sticky-toolbar">
+      <div class="progress-container">
+        <div class="progress-labels">
+          <span>Progreso del TP</span>
+          <span id="progress-percentage">0% (0/10 completados)</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-bar-fill" id="progress-bar"></div>
+        </div>
+      </div>
+
+      <div class="toolbar-actions">
+        <button class="btn btn-outline-amber" id="btn-open-biblio-all">📚 Guía Bibliográfica</button>
+        <button class="btn btn-secondary" id="btn-import-json">📥 Importar JSON</button>
+        <button class="btn btn-outline-blue" id="btn-git-guide">🚀 Guía Git / GitHub</button>
+        <button class="btn btn-primary" id="btn-export-json">💾 Exportar Respuestas (.json)</button>
+      </div>
+    </div>
+
+    <!-- ==================== DATOS DEL ESTUDIANTE ==================== -->
+    <section class="card student-card">
+      <div class="exercise-header">
+        <div>
+          <span class="exercise-number">Identificación de Entrega</span>
+          <h2 class="exercise-title">Datos del Estudiante (Trabajo Individual)</h2>
+        </div>
+        <span class="badge-tag">Obligatorio</span>
+      </div>
+      <p class="exercise-instruction">
+        Ingresa tus datos personales (Nombre, DNI/Legajo, Comisión y usuario de GitHub) para asociar el archivo <code>respuestas_tp1.json</code> a tu repositorio de entregas.
+      </p>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="student-name">Nombre y Apellido</label>
+          <input type="text" id="student-name" class="form-input" placeholder="Ej. Juan Pérez" required>
+        </div>
+        <div class="form-group">
+          <label for="student-dni">DNI / Legajo</label>
+          <input type="text" id="student-dni" class="form-input" placeholder="Ej. 42345678" required>
+        </div>
+        <div class="form-group">
+          <label for="student-career">Carrera / Comisión</label>
+          <input type="text" id="student-career" class="form-input" placeholder="Ej. Ing. Informática — UNJu">
+        </div>
+        <div class="form-group">
+          <label for="student-github">Usuario GitHub / Repo</label>
+          <input type="text" id="student-github" class="form-input" placeholder="Ej. jperez-ucse / tso-2026-tp1">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== EJERCICIO 1 ==================== -->
+    <section class="card" id="card-ej1">
+      <div class="exercise-header">
+        <div>
+          <span class="exercise-number">Ejercicio 01</span>
+          <h2 class="exercise-title">Definición y Rol del Sistema Operativo</h2>
+        </div>
+        <span class="exercise-status" id="status-ej1">Incompleto</span>
+      </div>
+
+      <div class="biblio-guide">
+        <div class="biblio-header">
+          <span class="biblio-title">📖 Dónde estudiar este tema en la bibliografía</span>
+          <span style="font-size: 0.8rem; color: #d2a8ff;">▼</span>
+        </div>
+        <div class="biblio-body">
+          <div class="biblio-item"><strong>Silberschatz (7ma Ed.):</strong> Cap. 1 (Introducción) — Sec. 1.1 "¿Qué hacen los SO?", pp. 3-8 <span class="pages">Cap. 1.1</span></div>
+          <div class="biblio-item"><strong>Carretero et al.:</strong> Cap. 2 (Introducción a los SO) — Sec. 2.1 "¿Qué es un SO?", pp. 33-37 <span class="pages">Cap. 2.1</span></div>
+          <div class="biblio-item"><strong>Stallings:</strong> Cap. 2 (Introducción a los SO) — Sec. 2.1 "Objetivos y funciones", pp. 53-58 <span class="pages">Cap. 2.1</span></div>
+          <div class="biblio-item"><strong>Tanenbaum:</strong> Cap. 1 (Introducción) — Sec. 1.1 "¿Qué es un sistema operativo?", pp. 1-6 <span class="pages">Cap. 1.1</span></div>
+          <div class="biblio-item"><strong>Diapositivas Cátedra:</strong> U2-3 (Introducción a los SO) — Diapositiva 3 "2.1 Definición de SO" <span class="pages">Slide 3</span></div>
+        </div>
+      </div>
+
+      <p class="exercise-instruction">
+        Lee atentamente las siguientes definiciones y selecciona la opción que corresponde a la definición técnica y rigurosa de <strong>Sistema Operativo</strong>:
+      </p>
+
+      <div class="options-list" id="ej1-options">
+        <label class="option-radio-card">
+          <input type="radio" name="ej1_definicion" value="opt_a">
+          <div class="option-content">
+            <span class="option-text"><strong>a)</strong> Es un conjunto de software aplicativo de alta productividad diseñado específicamente para la edición de documentos de texto, análisis de datos en hojas de cálculo y procesamiento de gráficos vectoriales.</span>
+          </div>
+        </label>
+        <label class="option-radio-card">
+          <input type="radio" name="ej1_definicion" value="opt_b">
+          <div class="option-content">
+            <span class="option-text"><strong>b)</strong> Es el conjunto de programas que administra de forma eficiente los recursos del hardware (CPU, memoria, E/S, almacenamiento) y actúa como intermediario y capa de abstracción entre el usuario/aplicaciones y la computadora.</span>
+          </div>
+        </label>
+        <label class="option-radio-card">
+          <input type="radio" name="ej1_definicion" value="opt_c">
+          <div class="option-content">
+            <span class="option-text"><strong>c)</strong> Es un circuito integrado de memoria no volátil programable que almacena el microcódigo de la CPU y ejecuta el firmware UEFI durante las etapas tempranas de encendido del hardware.</span>
+          </div>
+        </label>
+        <label class="option-radio-card">
+          <input type="radio" name="ej1_definicion" value="opt_d">
+          <div class="option-content">
+            <span class="option-text"><strong>d)</strong> Es una infraestructura distribuida de red de computadoras orientada a microservicios que coordina el enrutamiento de paquetes TCP/IP y balancea la carga de consultas SQL entre servidores remotos.</span>
+          </div>
+        </label>
+      </div>
+    </section>
+
+    <!-- ==================== EJERCICIO 2 ==================== -->
+    <section class="card" id="card-ej2">
+      <div class="exercise-header">
+        <div>
+          <span class="exercise-number">Ejercicio 02</span>
+          <h2 class="exercise-title">Funciones y Responsabilidades del Sistema Operativo</h2>
+        </div>
+        <span class="exercise-status" id="status-ej2">Incompleto</span>
+      </div>
+
+      <div class="biblio-guide">
+        <div class="biblio-header">
+          <span class="biblio-title">📖 Dónde estudiar este tema en la bibliografía</span>
+          <span style="font-size: 0.8rem; color: #d2a8ff;">▼</span>
+        </div>
+        <div class="biblio-body">
+          <div class="biblio-item"><strong>Silberschatz (7ma Ed.):</strong> Cap. 1 (Introducción) — Sec. 1.4-1.8 "Gestión de procesos, memoria y almacenamiento", pp. 18-28 <span class="pages">Cap. 1.4-1.8</span></div>
+          <div class="biblio-item"><strong>Carretero et al.:</strong> Cap. 2 (Introducción) — Sec. 2.1.2 "Funciones del SO", pp. 34-37 <span class="pages">Cap. 2.1.2</span></div>
+          <div class="biblio-item"><strong>Diapositivas Cátedra:</strong> U2-3 — Diapositiva 4 "2.2 Componentes del Sistema" y Diapositiva 5 "2.3 Servicios del SO" <span class="pages">Slides 4-5</span></div>
+        </div>
+      </div>
+
+      <p class="exercise-instruction">
+        Indica para cada una de las siguientes tareas si constituye o no una función o responsabilidad propia del Sistema Operativo:
+      </p>
+
+      <div class="matrix-table-wrap">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th>Función / Tarea</th>
+              <th style="width: 140px; text-align: center;">¿Es función del SO?</th>
+            </tr>
+          </thead>
+          <tbody id="ej2-tbody">
+            <!-- Renderizado dinámico desde app.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== EJERCICIO 3 ==================== -->
+    <section class="card" id="card-ej3">
+      <div class="exercise-header">
+        <div>
+          <span class="exercise-number">Ejercicio 03</span>
+          <h2 class="exercise-title">Arquitectura de Procesadores: Multihilamiento vs. Multinúcleo</h2>
+        </div>
+        <span class="exercise-status" id="status-ej3">Incompleto</span>
+      </div>
+
+      <div class="biblio-guide">
+        <div class="biblio-header">
+          <span class="biblio-title">📖 Dónde estudiar este tema en la bibliografía</span>
+          <span style="font-size: 0.8rem; color: #d2a8ff;">▼</span>
+        </div>
+        <div class="biblio-body">
+          <div class="biblio-item"><strong>Silberschatz (7ma Ed.):</strong> Cap. 1 — Sec. 1.3 "Arquitectura de los sistemas de computación: Sistemas multiprocesador y multinúcleo", pp. 13-17 <span class="pages">Cap. 1.3</span></div>
+          <div class="biblio-item"><strong>Stallings:</strong> Cap. 4 (Hilos, SMP y micronúcleos) — Sec. 4.2 "Multiprocesamiento simétrico (SMP)", pp. 165-172 <span class="pages">Cap. 4.2</span></div>
+          <div class="biblio-item"><strong>Carretero et al.:</strong> Cap. 1 — Sec. 1.9 "Multiprocesador y multicomputadora", pp. 30-31 <span class="pages">Cap. 1.9</span></div>
+          <div class="biblio-item"><strong>Diapositivas Cátedra:</strong> U1 — Diapositiva 8 "1.6 Arquitectura General: Uniprocesador, Multiprocesador SMP y Asimétrico" <span class="pages">Slide 8</span></div>
+        </div>
+      </div>
+
+      <p class="exercise-instruction">
+        Completa el cuadro comparativo seleccionando la característica técnica precisa para <strong>Multihilamiento (Hyper-Threading / SMT)</strong> y <strong>Multinúcleo (Multicore)</strong>:
+      </p>
+
+      <div class="matrix-table-wrap">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th style="width: 20%;">Dimensión</th>
+              <th style="width: 40%;">Chip con Multihilamiento (Multithreading / SMT)</th>
+              <th style="width: 40%;">Chip Multinúcleo (Multicore)</th>
+            </tr>
+          </thead>
+          <tbody id="ej3-tbody">
+            <!-- Renderizado dinámico desde app.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== EJERCICIO 4 ==================== -->
+    <section class="card" id="card-ej4">
+      <div class="exercise-header">
+        <div>
+          <span class="exercise-number">Ejercicio 04</span>
+          <h2 class="exercise-title">Conceptos Fundamentales: Programa vs. Proceso</h2>
+        </div>
+        <span class="exercise-status" id="status-ej4">Incompleto</span>
+      </div>
+
+      <div class="biblio-guide">
+        <div class="biblio-header">
+          <span class="biblio-title">📖 Dónde estudiar este tema en la bibliografía</span>
+          <span style="font-size: 0.8rem; color: #d2a8ff;">▼</span>
+        </div>
+        <div class="biblio-body">
+          <div class="biblio-item"><strong>Silberschatz (7ma Ed.):</strong> Cap. 3 (Procesos) — Sec. 3.1 "Concepto de proceso: Programa vs. Proceso", pp. 81-85 <span class="pages">Cap. 3.1</span></div>
+          <div class="biblio-item"><strong>Carretero et al.:</strong> Cap. 3 (Procesos) — Sec. 3.1 "Concepto de proceso", pp. 78-79 <span class="pages">Cap. 3.1</span></div>
+          <div class="biblio-item"><strong>Tanenbaum:</strong> Cap. 2 (Procesos) — Sec. 2.1 "Procesos: El modelo de proceso", pp. 71-76 <span class="pages">Cap. 2.1</span></div>
+          <div class="biblio-item"><strong>Stallings:</strong> Cap. 3 (Descripción y control de procesos) — Sec. 3.1 "¿Qué es un proceso?", pp. 107-112 <span class="pages">Cap. 3.1</span></div>
+        </div>
+      </div>
+
+      <p class="exercise-instruction">
+        <strong>Arrastra cada elemento</strong> desde la bandeja de items hacia la categoría correspondiente: <em>Programa (Entidad Pasiva)</em> o <em>Proceso (Entidad Activa en Ejecución)</em>.
+      </p>
+
+      <div class="dnd-container">
+        <div class="source-pool" id="ej4-pool-wrapper">
+          <div class="pool-title">Bandeja de Elementos por Clasificar (Arrastra hacia abajo)</div>
+          <div class="draggable-items-flow" id="ej4-source-pool">
+            <!-- Renderizado dinámico -->
+          </div>
+        </div>
+
+        <div class="drop-zones-grid">
+          <div class="drop-zone-card" data-zone-id="PROGRAMA" id="zone-ej4-programa">
+            <div class="drop-zone-header">
+              <div class="drop-zone-title">💾 Programa (P) — Entidad Pasiva</div>
+              <span class="drop-zone-counter" id="count-ej4-programa">0 items</span>
+            </div>
+            <div class="drop-zone-items" id="items-ej4-programa">
+              <div class="drop-zone-placeholder">Suelta aquí los elementos correspondientes a Programas</div>
+            </div>
+          </div>
+
+          <div class="drop-zone-card" data-zone-id="PROCESO" id="zone-ej4-proceso">
+            <div class="drop-zone-header">
+              <div class="drop-zone-title">⚡ Proceso (PR) — Entidad Activa</div>
+              <span class="drop-zone-counter" id="count-ej4-proceso">0 items</span>
+            </div>
+            <div class="drop-zone-items" id="items-ej4-proceso">
+              <div class="drop-zone-placeholder">Suelta aquí los elementos correspondientes a Procesos</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== EJERCICIO 5 ==================== -->
+    <section class="card" id="card-ej5">
+      <div class="exercise-header">
+        <div>
+          <span class="exercise-number">Ejercicio 05</span>
+          <h2 class="exercise-title">Componentes y Servicios del SO ante Situaciones Cotidianas</h2>
+        </div>
+        <span class="exercise-status" id="status-ej5">Incompleto</span>
+      </div>
+
+      <div class="biblio-guide">
+        <div class="biblio-header">
+          <span class="biblio-title">📖 Dónde estudiar este tema en la bibliografía</span>
+          <span style="font-size: 0.8rem; color: #d2a8ff;">▼</span>
+        </div>
+        <div class="biblio-body">
+          <div class="biblio-item"><strong>Silberschatz (7ma Ed.):</strong> Cap. 2 — Sec. 2.1 "Servicios del SO" y Sec. 2.2 "Llamadas al sistema", pp. 39-50 <span class="pages">Cap. 2.1-2.2</span></div>
+          <div class="biblio-item"><strong>Carretero et al.:</strong> Cap. 2 — Sec. 2.3 a 2.8 "Componentes del SO: Procesos, Memoria, E/S, Archivos", pp. 41-55 <span class="pages">Cap. 2.3-2.8</span></div>
+          <div class="biblio-item"><strong>Diapositivas Cátedra:</strong> U2-3 — Diapositivas 4, 5 y 6 "Componentes, Servicios y System Calls" <span class="pages">Slides 4-6</span></div>
+        </div>
+      </div>
+
+      <p class="exercise-instruction">
+        Selecciona el <strong>subsistema o componente del SO</strong> que interviene primordialmente para resolver cada una de las siguientes situaciones:
+      </p>
+
+      <div class="situations-list" id="ej5-list">
+        <!-- Renderizado dinámico -->
+      </div>
+    </section>
+
+    <!-- ==================== EJERCICIO 6 ==================== -->
+    <section class="card" id="card-ej6">
+      <div class="exercise-header">
+        <div>
+          <span class="exercise-number">Ejercicio 06</span>
+          <h2 class="exercise-title">Modos de Ejecución de la CPU: Modo Usuario (MU) vs. Modo Kernel (MK)</h2>
+        </div>
+        <span class="exercise-status" id="status-ej6">Incompleto</span>
+      </div>
+
+      <div class="biblio-guide">
+        <div class="biblio-header">
+          <span class="biblio-title">📖 Dónde estudiar este tema en la bibliografía</span>
+          <span style="font-size: 0.8rem; color: #d2a8ff;">▼</span>
+        </div>
+        <div class="biblio-body">
+          <div class="biblio-item"><strong>Silberschatz (7ma Ed.):</strong> Cap. 1 — Sec. 1.5 "Operaciones del SO: Modo dual (Modo usuario y modo kernel/supervisor)", pp. 17-21 <span class="pages">Cap. 1.5</span></div>
+          <div class="biblio-item"><strong>Carretero et al.:</strong> Cap. 1 — Sec. 1.2.1 "Niveles de ejecución" y Sec. 1.8 "Protección del procesador", pp. 4, 27-28 <span class="pages">Cap. 1.2.1, 1.8</span></div>
+          <div class="biblio-item"><strong>Stallings:</strong> Cap. 2 — Sec. 2.4 "Estructura del sistema y niveles de privilegio", pp. 72-76 <span class="pages">Cap. 2.4</span></div>
+          <div class="biblio-item"><strong>Diapositivas Cátedra:</strong> U1 — Diapositiva 7 "1.5 Protección: Modo Dual, Registros base/límite y Temporizador" <span class="pages">Slide 7</span></div>
+        </div>
+      </div>
+
+      <p class="exercise-instruction">
+        Determina para cada una de las siguientes acciones si se ejecuta en <strong>Modo Usuario (MU)</strong> (instrucciones no privilegiadas de aplicaciones) o en <strong>Modo Kernel (MK)</strong> (instrucciones privilegiadas con acceso directo a hardware y estructuras del SO):
+      </p>
+
+      <div class="matrix-table-wrap">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th style="width: 70%;">Acción o Evento del Sistema</th>
+              <th style="width: 30%; text-align: center;">Modo de Ejecución</th>
+            </tr>
+          </thead>
+          <tbody id="ej6-tbody">
+            <!-- Renderizado dinámico -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== EJERCICIO 7 ==================== -->
+    <section class="card" id="card-ej7">
+      <div class="exercise-header">
+        <div>
+          <span class="exercise-number">Ejercicio 07</span>
+          <h2 class="exercise-title">Estructura del Sistema Operativo y Arquitecturas de Kernel</h2>
+        </div>
+        <span class="exercise-status" id="status-ej7">Incompleto</span>
+      </div>
+
+      <div class="biblio-guide">
+        <div class="biblio-header">
+          <span class="biblio-title">📖 Dónde estudiar este tema en la bibliografía</span>
+          <span style="font-size: 0.8rem; color: #d2a8ff;">▼</span>
+        </div>
+        <div class="biblio-body">
+          <div class="biblio-item"><strong>Silberschatz (7ma Ed.):</strong> Cap. 2 — Sec. 2.7 "Estructura del SO: Monolítica, Por Capas, Microkernel, Módulos", pp. 58-65 <span class="pages">Cap. 2.7</span></div>
+          <div class="biblio-item"><strong>Tanenbaum:</strong> Cap. 1 — Sec. 1.7 "Estructura del sistema: Monolítica, Microkernels, Máquinas virtuales", pp. 41-48 <span class="pages">Cap. 1.7</span></div>
+          <div class="biblio-item"><strong>Stallings:</strong> Cap. 4 — Sec. 4.4 "Arquitectura de micronúcleos (Microkernels)", pp. 176-184 <span class="pages">Cap. 4.4</span></div>
+          <div class="biblio-item"><strong>Diapositivas Cátedra:</strong> U2-3 — Diapositiva 8 "Estructura de SO", Diapositiva 17 "3.8 Estructura interna" y Diapositiva 18 "2.7 Máquinas Virtuales" <span class="pages">Slides 8, 17, 18</span></div>
+        </div>
+      </div>
+
+      <p class="exercise-instruction">
+        Responde <strong>Verdadero (V)</strong> o <strong>Falso (F)</strong> para cada una de las siguientes afirmaciones sobre la organización interna del núcleo:
+      </p>
+
+      <div class="matrix-table-wrap">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th style="width: 78%;">Afirmación Técnica</th>
+              <th style="width: 22%; text-align: center;">Respuesta</th>
+            </tr>
+          </thead>
+          <tbody id="ej7-tbody">
+            <!-- Renderizado dinámico -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== EJERCICIO 8 ==================== -->
+    <section class="card" id="card-ej8">
+      <div class="exercise-header">
+        <div>
+          <span class="exercise-number">Ejercicio 08</span>
+          <h2 class="exercise-title">Clasificación de Sistemas Operativos por su Dominio de Aplicación</h2>
+        </div>
+        <span class="exercise-status" id="status-ej8">Incompleto</span>
+      </div>
+
+      <div class="biblio-guide">
+        <div class="biblio-header">
+          <span class="biblio-title">📖 Dónde estudiar este tema en la bibliografía</span>
+          <span style="font-size: 0.8rem; color: #d2a8ff;">▼</span>
+        </div>
+        <div class="biblio-body">
+          <div class="biblio-item"><strong>Silberschatz (7ma Ed.):</strong> Cap. 1 — Sec. 1.2 "Evolución histórica y entornos de computación", pp. 8-13 <span class="pages">Cap. 1.2</span></div>
+          <div class="biblio-item"><strong>Tanenbaum:</strong> Cap. 1 — Sec. 1.2 "Tipos de sistemas operativos (Mainframes, Servidores, Multiprocesadores, PC, Tiempo Real, Embebidos, Smart Cards)", pp. 7-12 <span class="pages">Cap. 1.2</span></div>
+          <div class="biblio-item"><strong>Stallings:</strong> Cap. 2 — Sec. 2.2 "Evolución de los sistemas operativos", pp. 58-68 <span class="pages">Cap. 2.2</span></div>
+          <div class="biblio-item"><strong>Diapositivas Cátedra:</strong> U2-3 — Diapositivas 10 a 16 (Primeros sistemas, Batch, Multiprogramación, Time-Sharing, Tiempo Real Hard/Soft, PC, Cliente-Servidor) y Diapositiva 22 "Resumen Comparativo" <span class="pages">Slides 10-16, 22</span></div>
+        </div>
+      </div>
+
+      <p class="exercise-instruction">
+        <strong>Arrastra cada escenario o dispositivo</strong> desde la bandeja hacia el tipo de Sistema Operativo al que corresponde:
+      </p>
+
+      <div class="dnd-container">
+        <div class="source-pool">
+          <div class="pool-title">Bandeja de Escenarios (Arrastra a la categoría correcta)</div>
+          <div class="draggable-items-flow" id="ej8-source-pool">
+            <!-- Renderizado dinámico -->
+          </div>
+        </div>
+
+        <div class="drop-zones-grid" id="ej8-drop-zones">
+          <!-- Renderizado dinámico de 8 zonas -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== EJERCICIO 9 ==================== -->
+    <section class="card" id="card-ej9">
+      <div class="exercise-header">
+        <div>
+          <span class="exercise-number">Ejercicio 09</span>
+          <h2 class="exercise-title">Arquitectura del Computador, DMA y Mecanismos de Protección</h2>
+        </div>
+        <span class="exercise-status" id="status-ej9">Incompleto</span>
+      </div>
+
+      <div class="biblio-guide">
+        <div class="biblio-header">
+          <span class="biblio-title">📖 Dónde estudiar este tema en la bibliografía</span>
+          <span style="font-size: 0.8rem; color: #d2a8ff;">▼</span>
+        </div>
+        <div class="biblio-body">
+          <div class="biblio-item"><strong>Silberschatz (7ma Ed.):</strong> Cap. 1 — Sec. 1.2 "Estructura de E/S y DMA", pp. 9-11; Sec. 1.4 "Jerarquía de almacenamiento y Caché", pp. 24-27; Cap. 2 — Sec. 2.8 "SYSGEN", pp. 66-68 <span class="pages">Cap. 1.2, 1.4, 2.8</span></div>
+          <div class="biblio-item"><strong>Carretero et al.:</strong> Cap. 1 — Sec. 1.3 "Interrupciones", Sec. 1.5 "Jerarquía de memoria", Sec. 1.7 "Entrada/Salida y DMA", Sec. 1.8 "Protección", pp. 7-30 <span class="pages">Cap. 1.3-1.8</span></div>
+          <div class="biblio-item"><strong>Diapositivas Cátedra:</strong> U1 — Diapositivas 2, 3, 4, 5, 7 y 10; U2-3 — Diapositiva 20 "SYSGEN" <span class="pages">U1 Slides & U2 Slide 20</span></div>
+        </div>
+      </div>
+
+      <p class="exercise-instruction">
+        Selecciona la opción correcta para cada una de las siguientes afirmaciones clave de arquitectura y hardware:
+      </p>
+
+      <div id="ej9-questions-container" style="display: flex; flex-direction: column; gap: 20px;">
+        <!-- Renderizado dinámico -->
+      </div>
+    </section>
+
+    <!-- ==================== EJERCICIO 10 ==================== -->
+    <section class="card" id="card-ej10">
+      <div class="exercise-header">
+        <div>
+          <span class="exercise-number">Ejercicio 10</span>
+          <h2 class="exercise-title">Principios de Diseño: Mecanismos vs. Políticas</h2>
+        </div>
+        <span class="exercise-status" id="status-ej10">Incompleto</span>
+      </div>
+
+      <div class="biblio-guide">
+        <div class="biblio-header">
+          <span class="biblio-title">📖 Dónde estudiar este tema en la bibliografía</span>
+          <span style="font-size: 0.8rem; color: #d2a8ff;">▼</span>
+        </div>
+        <div class="biblio-body">
+          <div class="biblio-item"><strong>Silberschatz (7ma Ed.):</strong> Cap. 2 — Sec. 2.6 "Diseño e implementación: Separación de mecanismos y políticas", pp. 56-58 <span class="pages">Cap. 2.6</span></div>
+          <div class="biblio-item"><strong>Tanenbaum:</strong> Cap. 1 — Sec. 1.6 "Conceptos de diseño", pp. 38-41 <span class="pages">Cap. 1.6</span></div>
+          <div class="biblio-item"><strong>Diapositivas Cátedra:</strong> U2-3 — Diapositiva 19 "2.8 Principio Clave: Mecanismos vs. Políticas" <span class="pages">Slide 19</span></div>
+        </div>
+      </div>
+
+      <p class="exercise-instruction">
+        Clasifica cada elemento como <strong>Mecanismo (CÓMO se hace algo / soporte de hardware o bajo nivel)</strong> o <strong>Política (QUÉ se decide hacer / criterio o parámetro de configuración)</strong>:
+      </p>
+
+      <div class="matrix-table-wrap">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th style="width: 70%;">Concepto o Declaración</th>
+              <th style="width: 30%; text-align: center;">Clasificación</th>
+            </tr>
+          </thead>
+          <tbody id="ej10-tbody">
+            <!-- Renderizado dinámico -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==================== MODAL DE EXPORTACIÓN ==================== -->
+  <div class="modal-backdrop" id="export-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">🎉 ¡Trabajo Práctico Listo para Exportar!</h3>
+        <button class="modal-close" id="btn-close-export-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Se ha generado exitosamente el payload con todas tus respuestas estructuradas.</p>
+        <p style="margin-top: 8px;">Guarda el archivo descargado como <code>respuestas_tp1.json</code> en la carpeta de tu repositorio local y realiza el commit correspondiente.</p>
+        
+        <div class="code-snippet-box">
+          <code id="git-command-snippet">git add respuestas_tp1.json && git commit -m "TP1 Resuelto" && git push</code>
+          <button class="btn btn-secondary" id="btn-copy-git-cmd" style="padding: 4px 8px; font-size: 0.75rem;">Copiar</button>
+        </div>
+
+        <div style="margin-top: 14px; background: rgba(35, 134, 54, 0.1); border: 1px solid rgba(63, 185, 80, 0.3); border-radius: var(--radius-sm); padding: 12px;">
+          <strong style="color: #3fb950;">✅ Cero Ambigüedad de Corrección:</strong>
+          <p style="font-size: 0.84rem; color: var(--text-secondary); margin-top: 4px;">
+            Este archivo contiene identificadores estandarizados evaluables al 100% mediante nuestro evaluador de consola o en Classmoji.
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="btn-modal-cancel">Cerrar</button>
+        <button class="btn btn-primary" id="btn-confirm-download">📥 Descargar respuestas_tp1.json</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL DE GUÍA GIT ==================== -->
+  <div class="modal-backdrop" id="git-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">🚀 Flujo de Trabajo con Git y GitHub (Fork & Clone)</h3>
+        <button class="modal-close" id="btn-close-git-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <ol style="padding-left: 20px; display: flex; flex-direction: column; gap: 12px;">
+          <li><strong>1. Hacer Fork del Repositorio de Cátedra:</strong>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 4px 0;">Ingresa a <a href="https://github.com/UNJU-Teoria-de-Sistemas-Operativos/TP1" target="_blank" style="color: var(--accent-primary); text-decoration: underline;">github.com/UNJU-Teoria-de-Sistemas-Operativos/TP1</a> y haz clic en el botón <strong>"Fork"</strong> (arriba a la derecha) para crear una copia en tu cuenta personal.</p>
+          </li>
+          <li><strong>2. Clonar tu Fork Personal:</strong>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 4px 0;">Abre la terminal en tu computadora y clona tu repositorio bifurcado (reemplazando <code>TU_USUARIO</code>):</p>
+            <div class="code-snippet-box"><code>git clone https://github.com/TU_USUARIO/TP1.git</code></div>
+          </li>
+          <li><strong>3. Resolver los 10 Ejercicios:</strong>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 4px 0;">Abre <code>index.html</code> en tu navegador, completa tus datos individuales y resuelve las consignas interactivas.</p>
+          </li>
+          <li><strong>4. Exportar y Guardar el Archivo JSON:</strong>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 4px 0;">Al llegar al 100%, pulsa <em>"Exportar Respuestas (.json)"</em> y guarda/reemplaza el archivo <code>respuestas_tp1.json</code> dentro de la carpeta clonada del repositorio.</p>
+          </li>
+          <li><strong>5. Autoevaluación Local (Opcional pero muy recomendado):</strong>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 4px 0;">Verifica tu calificación formativa antes de entregar ejecutando:</p>
+            <div class="code-snippet-box"><code>python autograder_tp1.py respuestas_tp1.json</code></div>
+          </li>
+          <li><strong>6. Guardar Cambios y Subir a tu Fork:</strong>
+            <div class="code-snippet-box"><code>git add respuestas_tp1.json<br>git commit -m "Entrega TP1 - [Tu Nombre y Apellido]"<br>git push origin main</code></div>
+          </li>
+          <li><strong>7. Entrega Final:</strong>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 4px 0;">Copia el enlace de tu repositorio Fork (<code>https://github.com/TU_USUARIO/TP1</code>) y entrégalo según las indicaciones de la cátedra.</p>
+          </li>
+        </ol>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="btn-close-git-guide">¡Entendido!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Input oculto para importar JSON -->
+  <input type="file" id="file-input-json" accept=".json" style="display: none;">
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
