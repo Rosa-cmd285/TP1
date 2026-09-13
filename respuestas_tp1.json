@@ -1,0 +1,116 @@
+{
+  "tp_metadata": {
+    "tp_id": "TSO-2026-TP1",
+    "title": "TP N° 1: Introducción a los Sistemas Operativos y Estructuras de Computación",
+    "catedra": "Teoría de Sistemas Operativos - UNJu Facultad de Ingeniería",
+    "version": "1.0.0",
+    "submitted_at": "2026-09-05T19:24:45.233Z"
+  },
+  "student": {
+    "name": "Rosa Mabel Serpa",
+    "dni": "27097004",
+    "career": "PUI-LIE",
+    "github": "Rosa-cmd285"
+  },
+  "answers": {
+    "ej1_definicion": "opt_b",
+    "ej2_funciones_so": {
+      "gestion_procesos": true,
+      "administracion_memoria": false,
+      "gestion_dispositivos_io": true,
+      "diseno_paginas_web": false,
+      "edicion_imagenes": false,
+      "deteccion_errores_proteccion": true,
+      "administracion_sistema_archivos": true,
+      "gestion_usuarios_permisos": true
+    },
+    "ej3_multithreading_vs_multicore": {
+      "hardware_multithreading": "hw_multiple_cpu_cores",
+      "hardware_multicore": "hw_multiple_cpu_cores",
+      "rendimiento_multicore": "perf_alto_paralelo",
+      "paralelismo_multicore": "par_fisico_simultaneo",
+      "paralelismo_multithreading": "par_logico_concurrencia",
+      "rendimiento_multithreading": "perf_moderado_latencia",
+      "costo_multithreading": "cost_gratuito",
+      "costo_multicore": "cost_alto_mayor_silicio"
+    },
+    "ej4_programa_vs_proceso": {
+      "item_chrome_exe": "PROGRAMA",
+      "item_word_editing": "PROCESO",
+      "item_word_exe": "PROGRAMA",
+      "item_game_installed": "PROGRAMA",
+      "item_chrome_ram": "PROCESO",
+      "item_game_running": "PROCESO"
+    },
+    "ej5_funciones_situaciones": {
+      "sit_guardar_carpeta": "FS_MGMT",
+      "sit_imprimir_pdf": "IO_MGMT",
+      "sit_abrir_simultaneo": "PROC_MGMT",
+      "sit_usar_mouse_teclado": "IO_INTERRUPT",
+      "sit_doble_clic_icono": "SYS_CALL_GUI",
+      "sit_asignar_ram_app": "MEM_MGMT"
+    },
+    "ej6_modo_usuario_kernel": {
+      "act_1_word": "MU",
+      "act_2_admin_ram": "MK",
+      "act_3_vlc": "MU",
+      "act_4_irq_teclado": "MK",
+      "act_5_crear_proceso": "MK",
+      "act_6_navegar_web": "MU",
+      "act_8_excel": "MU",
+      "act_10_permisos_archivos": "MK",
+      "act_9_asignar_cpu": "MK",
+      "act_7_controlador_disco": "MK",
+      "act_11_modificar_mapa_memoria": "MK",
+      "act_15_asignar_memoria_chrome": "MU",
+      "act_14_reconocer_usb": "MK",
+      "act_13_escribir_busqueda": "MU",
+      "act_12_cambiar_reloj_hw": "MK"
+    },
+    "ej7_estructuras_kernel_vf": {
+      "vf_2_monolitico_user_space": false,
+      "vf_1_kernel_admin_hw": true,
+      "vf_3_linux_monolitico": true,
+      "vf_4_microkernel_esenciales": true,
+      "vf_7_minix_qnx_microkernel": true,
+      "vf_5_microkernel_seguridad": true,
+      "vf_6_fallo_monolitico_afecta_todo": false,
+      "vf_9_windows11_hibrido": true,
+      "vf_15_hibridos_eliminan_desventajas_total": false,
+      "vf_14_microkernel_modularidad_mantenimiento": true,
+      "vf_13_macos_xnu_hibrido": true,
+      "vf_12_comunicacion_monolitico_mas_rapida": true,
+      "vf_10_microkernel_mayor_rendimiento": false,
+      "vf_11_microkernel_servicios_fuera": true,
+      "vf_8_hibridos_combinan": true
+    },
+    "ej8_tipos_sistemas_operativos": {
+      "so_marcapasos": "SO_RT_HARD",
+      "so_smartphone": "SO_MOBILE",
+      "so_ecommerce_web": "SO_SERVER",
+      "so_tarjeta_sim": "SO_SMARTCARD",
+      "so_laptop_estudiante": "SO_PC",
+      "so_cajeros_banco": "SO_MAINFRAME",
+      "so_supercomputadora": "SO_MULTIPROC_DISTRIB",
+      "so_horno_secado": "SO_EMBEDDED",
+      "so_aeropuerto_vuelos": "SO_RT_HARD",
+      "so_horno_microondas": "SO_EMBEDDED",
+      "so_transparente_multiprocesador": "SO_MAINFRAME"
+    },
+    "ej9_arquitectura_proteccion_mc": {
+      "mc_dma": "dma_libera_cpu",
+      "mc_localidad_cache": "localidad_temporal_espacial",
+      "mc_registros_base_limite": "proteccion_espacio_memoria",
+      "mc_temporizador_cpu": "evita_monopolio_cpu",
+      "mc_sysgen_proposito": "adaptar_so_hardware_especifico"
+    },
+    "ej10_mecanismos_vs_politicas": {
+      "mvp_timer_hardware": "MECANISMO",
+      "mvp_quantum_20ms": "POLITICA",
+      "mvp_bit_modo_dual": "MECANISMO",
+      "mvp_prioridad_proceso_alta": "POLITICA",
+      "mvp_politica_reemplazo_lru": "POLITICA",
+      "mvp_registros_base_limite": "MECANISMO"
+    }
+  }
+}
